@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -18,7 +19,7 @@ public class UserDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private UserRoles role;
+    private Set roles;
     private String createdBy;
     private Date createdOn;
     private String lastUpdatedBy;
