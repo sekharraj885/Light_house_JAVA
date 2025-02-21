@@ -4,6 +4,7 @@ import com.lighthouse.DTOs.UserDTO;
 import com.lighthouse.models.User;
 import com.lighthouse.repositories.UserRepository;
 import com.lighthouse.utils.Query.UserQuery;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,7 +30,7 @@ public class UserService {
                 createdUser.getFirstName(),
                 createdUser.getLastName(),
                 createdUser.getEmail().toLowerCase(Locale.ROOT),
-                createdUser.getRole(),
+                createdUser.getRoles(),
                 createdUser.getCreatedBy(),
                 createdUser.getCreatedOn(),
                 createdUser.getLastUpdatedBy(),
@@ -47,7 +48,7 @@ public class UserService {
                         user.getFirstName(),
                         user.getLastName(),
                         user.getEmail(),
-                        user.getRole(),
+                        user.getRoles(),
                         user.getCreatedBy(),
                         user.getCreatedOn(),
                         user.getLastUpdatedBy(),
@@ -62,7 +63,7 @@ public class UserService {
                         user.getFirstName(),
                         user.getLastName(),
                         user.getEmail(),
-                        user.getRole(),
+                        user.getRoles(),
                         user.getCreatedBy(),
                         user.getCreatedOn(),
                         user.getLastUpdatedBy(),
@@ -79,8 +80,8 @@ public class UserService {
        }
         if(user.getLastName() !=null){
             existingUser.setLastName(user.getLastName());
-        } if(user.getRole() !=null){
-            existingUser.setRole(user.getRole());
+        } if(user.getRoles() !=null){
+            existingUser.setRoles(user.getRoles());
         } if(user.getPassword() !=null){
             existingUser.setPassword(user.getPassword());
         }
@@ -90,7 +91,7 @@ public class UserService {
                 updatedUser.getEmail().toLowerCase(Locale.ROOT),
                 updatedUser.getFirstName(),
                 updatedUser.getLastName(),
-                updatedUser.getRole(),
+                updatedUser.getRoles(),
                 updatedUser.getCreatedBy(),
                 updatedUser.getCreatedOn(),
                 updatedUser.getLastUpdatedBy(),

@@ -10,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -37,8 +38,13 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private UserRoles role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles;
 
     private Boolean deleted = false;
 
