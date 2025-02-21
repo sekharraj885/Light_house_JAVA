@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: lighthouse-backend
+    runtime: docker  # or "native" if not using Docker
+    buildCommand: |
+      curl -fsSL https://downloads.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz | tar xz -C /opt/render/project/
+      export MAVEN_HOME=/opt/render/project/apache-maven-3.9.5
+      export PATH=$MAVEN_HOME/bin:$PATH
+      ./mvnw clean package
+    startCommand: java -jar target/*.jar
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://lighthouse:BvEbCH327l9PzmPhSV9l7ahVBDkfZvhQ@dpg-curuk623esus73fgr6qg-a/lighthouse_27s6
+        sync: false  # Add your Render PostgreSQL URL manually
+      - key: JWT_SECRET
+        value: MySuperSecretKeyForJWT1234567890123456
+      - key: JAVA_VERSION
+        value: 23
+
