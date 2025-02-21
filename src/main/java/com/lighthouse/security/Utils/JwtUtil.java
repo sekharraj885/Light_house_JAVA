@@ -12,6 +12,10 @@ import java.util.function.Function;
 
 @Component
 public class JwtUtil {
+    public JwtUtil() {
+        System.out.println("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{✅ JwtUtil bean created successfully!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^6");
+    }
+
     @Value("${jwt.secret}")
     private String secretKey;
 
